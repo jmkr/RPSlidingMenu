@@ -30,7 +30,7 @@
 /**
  RPSlidingMenuViewController is a subclass of UICollectionViewController that is supplies methods that can be overridden to supply the number of items in the menu, customize the menu cell and also to react to a menu item being tapped.
  */
-@interface RPSlidingMenuViewController : UICollectionViewController
+@interface RPSlidingMenuViewController : UIViewController
 
 /**
  The height cells should be when featured.  Defaults to RPSlidingCellFeatureHeight
@@ -74,5 +74,8 @@
  
  */
 - (void)slidingMenu:(RPSlidingMenuViewController *)slidingMenu didSelectItemAtRow:(NSInteger)row;
+
+
+@property (nonatomic,strong) UICollectionView *collectionView;
 
 @end

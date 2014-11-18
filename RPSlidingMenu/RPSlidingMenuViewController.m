@@ -58,6 +58,12 @@ static NSString *RPSlidingCellIdentifier = @"RPSlidingCellIdentifier";
     
     [super viewDidLoad];
 
+    if (!self.collectionView) {
+        self.collectionView = [[UICollectionView alloc] init];
+    }
+    self.collectionView.delegate = self;
+    self.collectionView.dataSource = self;
+
     self.collectionView.collectionViewLayout = [[RPSlidingMenuLayout alloc] initWithDelegate:self];
 
     [self.collectionView registerClass:[RPSlidingMenuCell class] forCellWithReuseIdentifier:RPSlidingCellIdentifier];

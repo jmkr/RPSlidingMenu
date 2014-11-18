@@ -60,7 +60,12 @@ const CGFloat RPSlidingCellDragInterval = 180.0f;
 
     // last rect will be used to calculate frames past the first one.  We initialize it to a non junk 0 value
     CGRect lastRect = CGRectMake(0.0f, 0.0f, screenWidth, RPSlidingCellCollapsedHeight);
-    NSInteger numItems = [self.collectionView numberOfItemsInSection:0];
+    NSInteger numItems;
+    if ([self.collectionView numberOfSections] > 0) {
+        numItems = [self.collectionView numberOfItemsInSection:0];
+    } else {
+        numItems = 0;
+    }
 
     CGFloat featureHeight = [self featureHeight];
     CGFloat normalHeight = [self collapsedHeight];
@@ -122,7 +127,12 @@ const CGFloat RPSlidingCellDragInterval = 180.0f;
 
 - (CGSize)collectionViewContentSize {
 
-    NSInteger numberOfItems = [self.collectionView numberOfItemsInSection:0];
+    NSInteger numberOfItems;
+    if ([self.collectionView numberOfSections] > 0) {
+        numberOfItems = [self.collectionView numberOfItemsInSection:0];
+    } else {
+        numberOfItems = 0;
+    }
     CGFloat height = (numberOfItems * RPSlidingCellDragInterval) + (self.collectionView.frame.size.height - RPSlidingCellDragInterval);
     return CGSizeMake(self.collectionView.frame.size.width, height);
 
